@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "NodeNext",
+        "strict": true,
+        "esModuleInterop": true,
+        "moduleResolution": "nodenext",
+        "outDir": "dist",
+        "rootDir": "src",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"]
+        }
+    },
+    "include": ["src/**/*", "# Rest API example with vite a task runn.mdx"],
+}
