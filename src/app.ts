@@ -1,17 +1,17 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import userRouter from './routes/userRoutes';
+import Express from 'express';
+import { PORT } from './config';
+import Database from './services/Database';
+import App from './services/ExpressApp';
 
-const app = express();
+const StartServer = async () => {
+  
+  const app = Express();
+  await Database()
+  await App(app);
 
-app.use(bodyParser.json())
-app.use('/api/user',userRouter)
-// HMR handling
-if (import.meta.hot) {
-    import.meta.hot.accept((newModule) => { 
-      console.log('🔥 HMR update');
-    });
-  }
+  app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+  });
+}
 
-
-export const viteNodeApp = app;
+StartServer()

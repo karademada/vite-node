@@ -1,8 +1,9 @@
+import { UserDTO } from "@/dto/user.dto";
 import { NextFunction, Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import { ZodError, z } from "zod";
 
-export function validateData(schema: z.ZodObject<any, any>) {
+export function validateData(schema: z.ZodObject<any, any>){
   return (req: Request, res: Response, next: NextFunction) => {
     try {
       schema.parse(req.body);
@@ -23,5 +24,5 @@ export function validateData(schema: z.ZodObject<any, any>) {
           .json({ error: "Internal Server Error" });
       }
     }
-  };
+  }
 }
